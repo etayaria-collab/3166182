@@ -1,53 +1,49 @@
+package javaapplication4;
 
-package pkg3166182project;
+import java.util.Scanner;
 
-import java.util.ArrayList;
+public class JavaApplication4 {
+    
+   static class SmartBox<T> {
 
-public class Main {
+    private T item;
+    private String boxName;
+
+    public SmartBox(String boxName) {
+        this.boxName = boxName;
+    }
+
+    public void store(T item) {
+        this.item = item;
+        System.out.println("Item stored in " + boxName);
+    }
+
+    public T retrieve() {
+        return item;
+    }
+
+    public void display() {
+        System.out.println("Box: " + boxName);
+        System.out.println("Content: " + item);
+    }
+}
+
+
     public static void main(String[] args) {
-        ArrayList<Vehicle> list = new ArrayList<>();
-        
-        list.add(new Vehicle("Toyota", 2020));
-        list.add(new Car("BMW", 2022, 4));
+       
+      
+        SmartBox<String> nameBox =new SmartBox<>("Names Box");
 
-        for (Vehicle v : list) {
-            v.display();
-        }
+        SmartBox<Integer> numberBox = new SmartBox<>("Numbers Box");
 
-        Vehicle v = new Vehicle("Mercedes", 2023);
-        v.display();
-        v.display("New");
-    }
-}
+        SmartBox<Double> priceBox =new SmartBox<>("Prices Box");
 
-class Vehicle {
-    protected String brand;
-    protected int year;
+        nameBox.store("Abdulrahman");
+        numberBox.store(21);
+        priceBox.store(99.99);
 
-    public Vehicle(String brand, int year) {
-        this.brand = brand;
-        this.year = year;
-    }
-
-    public void display() {
-        System.out.println(brand + " - " + year);
-    }
-
-    public void display(String extra) {
-        System.out.println(brand + " - " + year + " (" + extra + ")");
-    }
-}
-
-class Car extends Vehicle {
-    private int doors;
-
-    public Car(String brand, int year, int doors) {
-        super(brand, year);
-        this.doors = doors;
-    }
-
-    @Override
-    public void display() {
-        System.out.println(brand + " - " + year + " - Doors: " + doors);
+        nameBox.display();
+        numberBox.display();
+        priceBox.display();
     }
 }
